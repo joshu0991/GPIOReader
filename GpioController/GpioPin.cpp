@@ -35,7 +35,14 @@ int GpioPin::exportPin()
 int GpioPin::unexportPin()
 {
 	int r_var = 0;
-
-
+	std::string unexportPath = "/sys/class/gpio/unexport";
+	std::ofstream unexportPin(unexportPath.c_str());
+	if(unexportPin < 0)
+	{
+		std::cout << "Failed tonopen file " << std::endl;
+		r_var = -1;
+	}
+	unexportPin << this->gpioPin;
+	unexportPin.close(); 
 	return r_var;
 }
