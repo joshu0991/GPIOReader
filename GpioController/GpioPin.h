@@ -8,10 +8,13 @@ using std::string;
 
 class GpioPin
 {
+	GpioPin* pinMem;
 	string gpioPin;
-
 public:
+	~GpioPin();
 	GpioPin(string);
+	int unexportPin();
 	int exportPin();
+	void setPinMem(GpioPin*);
 };
 #endif
