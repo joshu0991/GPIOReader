@@ -83,15 +83,40 @@ int GpioPin::setValue(string value)
 		std::cout << "Failed to open pin " << std::endl;
 		return -1;
 	}
-	//if(value == "1")
-	//{
-	std::cout << "Pin is on " << std::endl;
-	//}
+	if(value == "1")
+	{
+		std::cout << "Pin is on " << std::endl;
+	}
+	else
+	{
+		std::cout << "Pin is off " << std::endl;
+	}
 	writer << value;
 	writer.close();
 	return 0;
 }
 
-
+string GpioPin::getValue()
+{
+	string path = "/sys/class/gpio/gpio/" + this->gpioPin + "/value";
+	string value;
+	ifstream reader(path.c_str());
+	if(reader < 0)
+	{
+		std::cout << "Failed to read file " << std::endl;
+		return "-1";
+	}
+	reader >> value;
+	if (value != "0")
+	{
+		value = "1";
+	}
+	else
+	{
+		value = "0";
+	}
+	reader.close();
+	return value;
+}
 //notes:
 //Learn exception handling and replace if statements.

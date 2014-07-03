@@ -6,6 +6,7 @@
 #include <iostream>
 namespace GPIODriver
 {
+using std::ifstream;
 using std::string;
 using std::ofstream;
 class GpioPin
@@ -22,7 +23,7 @@ public:
 	int unexportPin();//unexport a pin
 	int exportPin();//export a pin
 	int setValue(string val);//for writing to pins
-	int getValue();//pins current state
+	string getValue();//pins current state
 	int  getGpioNum();
 };
 }
