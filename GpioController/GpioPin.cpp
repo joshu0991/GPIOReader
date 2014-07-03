@@ -106,8 +106,9 @@ string GpioPin::getValue()
 		std::cout << "Failed to read file " << std::endl;
 		return "-1";
 	}
-	reader >> value;
-	if (value != "0")
+	getline(reader, value);
+	std::cout << value << std::endl;
+	if (value == "0")
 	{
 		value = "1";
 	}
