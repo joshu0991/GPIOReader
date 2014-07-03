@@ -1,5 +1,5 @@
 #include "GpioPin.h"
-
+using namespace GPIODriver;
 GpioPin::GpioPin(string pNum) : gpioPin(pNum), direction("-1")
 {
 	std::cout << pNum << " pin " << pNum << " set" << std::endl;

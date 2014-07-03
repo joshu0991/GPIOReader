@@ -4,6 +4,8 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+namespace GPIODriver
+{
 using std::string;
 using std::ofstream;
 class GpioPin
@@ -22,4 +24,5 @@ public:
 	int getValue();//pins current state
 	int  getGpioNum();
 };
+}
 #endif

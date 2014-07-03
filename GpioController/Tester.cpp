@@ -1,5 +1,5 @@
 #include "GpioPin.h"
-
+using namespace GPIODriver;
 int main()
 {
 GpioPin* p25 = new GpioPin("25");
