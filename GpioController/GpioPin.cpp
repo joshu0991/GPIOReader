@@ -108,7 +108,7 @@ string GpioPin::getValue()
 	}
 	getline(reader, value);
 	std::cout << value << std::endl;
-	if (value == "0")
+	if (value != "0")
 	{
 		value = "1";
 	}
