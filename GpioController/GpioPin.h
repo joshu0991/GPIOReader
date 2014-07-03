@@ -16,6 +16,7 @@ public:
 	~GpioPin();
 	GpioPin(string);
 	GpioPin(string, string);
+	GpioPin(string, string, string);
 	string getDirection();
 	int setDirection(string direction);//set in or out
 	int unexportPin();//unexport a pin

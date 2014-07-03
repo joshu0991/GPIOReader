@@ -10,6 +10,14 @@ GpioPin::GpioPin(string pNum, string dir) : gpioPin(pNum), direction(dir)
 	std::cout << " Pin " << pNum << " set and direction is "  << dir << std::endl;
 }
 
+GpioPin::GpioPin(string pNum, string dir, string val) : gpioPin(pNum), direction(dir)
+{
+	exportPin();
+	std::cout << "Pin " << pNum << " set and direction is " << dir << " Pin set as " << val <<std::endl;
+	setValue(val);
+}
+
+
 GpioPin::~GpioPin()
 {
 	std::cout << "Deleting pin memory" <<std::endl;
