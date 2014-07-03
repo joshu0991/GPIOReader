@@ -2,13 +2,16 @@
 
 int main()
 {
-GpioPin* p5 = new GpioPin("5");
-p5->exportPin();
-if(p5->getDirection() == "-1")
+GpioPin* p25 = new GpioPin("25");
+p25->exportPin();
+if(p25->getDirection() == "-1")
 {
-	p5->setDirection("in");
+	p25->setDirection("out");
 }
-p5->unexportPin();
-delete p5;
+p25->setValue("1");
+sleep(2);
+p25->setValue("0");
+p25->unexportPin();
+delete p25;
 return 0;
 }

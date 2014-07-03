@@ -48,7 +48,7 @@ int GpioPin::unexportPin()
 int GpioPin::setDirection(string direction)
 {
 
-	string valPath = "/sys/class/gpio" + this->gpioPin + "/direction";
+	string valPath = "/sys/class/gpio/gpio" + this->gpioPin + "/direction";
 	ofstream dFile(valPath.c_str());
 	if(dFile < 0)
 	{
@@ -65,5 +65,25 @@ string GpioPin::getDirection()
 {
 	return this->direction;
 }
+
+int GpioPin::setValue(string value)
+{
+	string path = "/sys/class/gpio/gpio" + this->gpioPin + "/value";
+	ofstream writer(path.c_str());
+	if(writer < 0)
+	{
+		std::cout << "Failed to open pin " << std::endl;
+		return -1;
+	}
+	//if(value == "1")
+	//{
+	std::cout << "Pin is on " << std::endl;
+	//}
+	writer << value;
+	writer.close();
+	return 0;
+}
+
+
 //notes:
 //Learn exception handling and replace if statements.
