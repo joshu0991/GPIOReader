@@ -4,6 +4,9 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <signal.h>
+
+
 namespace GPIODriver
 {
 using std::ifstream;

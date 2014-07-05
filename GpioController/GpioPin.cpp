@@ -1,5 +1,7 @@
 #include "GpioPin.h"
 using namespace GPIODriver;
+
+
 GpioPin::GpioPin(string pNum) : gpioPin(pNum), direction("-1")
 {
 	std::cout << pNum << " pin " << pNum << " set" << std::endl;
@@ -43,7 +45,7 @@ int GpioPin::unexportPin()
 	ofstream unexportPin(unexportPath.c_str());
 	if(unexportPin < 0)
 	{
-		std::cout << "Failed to open file " << std::endl;
+		std::cerr << "Failed to open file " << std::endl;
 		return -1;
 	}
 	std::cout << "Pin unexported successfully " << std::endl;
@@ -60,7 +62,7 @@ int GpioPin::setDirection(string direction)
 	ofstream dFile(valPath.c_str());
 	if(dFile < 0)
 	{
-		std::cout << "Failed to open file " << std::endl;
+		std::cerr << "Failed to open file " << std::endl;
 		return -1;
 	}
 	dFile << direction;
@@ -85,11 +87,11 @@ int GpioPin::setValue(string value)
 	}
 	if(value == "1")
 	{
-		std::cout << "Pin is on " << std::endl;
+		std::cerr << "Pin is on " << std::endl;
 	}
 	else
 	{
-		std::cout << "Pin is off " << std::endl;
+		std::cerr << "Pin is off " << std::endl;
 	}
 	writer << value;
 	writer.close();
@@ -103,7 +105,7 @@ string GpioPin::getValue()
 	ifstream reader(path.c_str());
 	if(reader < 0)
 	{
-		std::cout << "Failed to read file " << std::endl;
+		std::cerr << "Failed to read file " << std::endl;
 		return "-1";
 	}
 	getline(reader, value);
@@ -120,4 +122,3 @@ string GpioPin::getValue()
 	return value;
 }
 //notes:
-//Learn exception handling and replace if statements.
