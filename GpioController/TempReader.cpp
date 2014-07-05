@@ -7,8 +7,11 @@ TempReader::TempReader()
 }
 
 
-auto TempReader::readDS18B20()
+int TempReader::readDS18B20()
 {
+	int  r_var = 0;
 
+
+	return r_var;
 
 }

@@ -1,7 +1,9 @@
 #ifndef TEMP_READER_H
 #define TEMP_READER_H
 
+#include <iostream>
 #include "GpioPin.h"
+using std::cout;
 using namespace GPIODriver;
 class TempReader
 {
@@ -10,7 +12,7 @@ private:
 	//string command2 = "sudo modprobe w1-therm";
 public:
 	TempReader();//will call the modprobe
-	auto readDS18B20();
+	int readDS18B20();
 
 };
 

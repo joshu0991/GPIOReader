@@ -12,7 +12,7 @@ Tester.o: Tester.cpp
 	$(CC) -Wall -c Tester.cpp
 
 TempDriver: TempReader.o TempDriver.o
-	$(CC) - Wall -c TempReader.o TempDriver.o -o TempDriver
+	$(CC) TempReader.o TempDriver.o -o TempDriver
 
 TempReader.o: TempReader.cpp
 	$(CC) -Wall -c TempReader.cpp
