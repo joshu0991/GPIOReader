@@ -18,6 +18,7 @@ public:
 	TempReader();
 	TempReader(const char*, const char*);//will call the modprobe
 	int readDS18B20();
+	float convertTemp(string);
 };
 
 
