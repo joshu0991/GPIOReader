@@ -20,17 +20,20 @@ int TempReader::readDS18B20()
 {
 	int  r_var = 0;
 	char path[] = "/sys/bus/w1/devices/";//path to temp sensor
-	char folder[16];//specific id of temp sensor
+	//char folder[16];//specific id of temp sensor
 	DIR *dir = opendir(path);
 	if(dir != NULL)
 	{
-		dirent = readdir(dir);
-		if(dirent->d_type == DT_LNK && strstr(dirent->d_name, "28-") != NULL)
+		while((dirent = readdir(dir)))
 		{
-			strcpy(folder, dirent->d_name);
+			if(dirent->d_name[0] == '.')
+			{
+				continue;
+			}
+			std::cout << dirent->d_name <<std::endl;
 		}
-		std::cout << dirent->d_name <<std::endl;
 	}
+
 	return r_var;
 }
 
