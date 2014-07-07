@@ -1,19 +1,24 @@
 #ifndef TEMP_READER_H
 #define TEMP_READER_H
-
+#include <cstdlib>
 #include <iostream>
 #include "GpioPin.h"
+#include <dirent.h>
+#include <string.h>
+//using std::string;
 using std::cout;
+using std::system;
 using namespace GPIODriver;
 class TempReader
 {
-private:
-	//string command1 = "sudo modprobe w1-gpio";
-	//string command2 = "sudo modprobe w1-therm";
+	struct dirent *dirent;
+	const char* bufOne;
+	const char* bufTwo;
 public:
-	TempReader();//will call the modprobe
+	TempReader();
+	TempReader(const char*, const char*);//will call the modprobe
 	int readDS18B20();
-
 };
+
 
 #endif
