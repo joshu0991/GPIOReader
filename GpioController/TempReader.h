@@ -6,7 +6,7 @@
 #include <string.h>
 #include  <fstream>
 
-using std::ofstream;
+using std::fstream;
 using std::ifstream;
 using std::string;
 using std::cout;

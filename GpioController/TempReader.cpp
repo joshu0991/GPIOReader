@@ -89,8 +89,9 @@ float TempReader::convertTemp(string d)
 
 int TempReader::writeTemp(float farenheit, float celcius)
 {
-	ofstream writer("temps.txt");
-	if(writer > 0)
+	fstream writer;
+	writer.open("Temps.txt", fstream::out);
+	if(writer < 0)
 	{
 		std::cout << "Failed to open file" <<std::endl;
 		return -1;
