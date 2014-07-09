@@ -100,16 +100,18 @@ int GpioPin::setValue(string value)
 
 string GpioPin::getValue()
 {
-	string path = "/sys/class/gpio/gpio/" + this->gpioPin + "/value";
+	string path = "/sys/class/gpio/gpio" + this->gpioPin + "/value";
 	string value;
-	ifstream reader(path.c_str());
+	//std::cout << path << std::endl;
+	ifstream reader;
+	reader.open(path.c_str());
 	if(reader < 0)
 	{
 		std::cerr << "Failed to read file " << std::endl;
 		return "-1";
 	}
-	getline(reader, value);
-	std::cout << value << std::endl;
+	reader >> value;
+	//std::cout << value << std::endl;
 	if (value != "0")
 	{
 		value = "1";
