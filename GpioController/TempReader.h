@@ -2,24 +2,30 @@
 #define TEMP_READER_H
 #include <cstdlib>
 #include <iostream>
-#include "GpioPin.h"
 #include <dirent.h>
 #include <string.h>
-//using std::string;
+#include  <fstream>
+
+using std::ofstream;
+using std::ifstream;
+using std::string;
 using std::cout;
 using std::system;
-using namespace GPIODriver;
 class TempReader
 {
 	struct dirent *dirent;
 	const char* bufOne;
 	const char* bufTwo;
+	float degC;
+	float degF;
+
 public:
 	TempReader();
 	TempReader(const char*, const char*);//will call the modprobe
 	int readDS18B20();
+	int writeTemp(float, float);
 	float convertTemp(string);
+	float getCel();
+	float getFar();
 };
-
-
 #endif

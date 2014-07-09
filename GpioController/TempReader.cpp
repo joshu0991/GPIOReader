@@ -48,6 +48,8 @@ int TempReader::readDS18B20()
 		tempStream.close();
 		celcius = convertTemp(data);
 		farenheit = (((celcius * 9)/5)+32);
+		degC = celcius;
+		degF = farenheit;
 		printf("Farenheit %.2f\n", farenheit);
 		printf("Celcius %.2f\n", celcius);
 
@@ -85,8 +87,28 @@ float TempReader::convertTemp(string d)
 	return celcius;
 }
 
+int TempReader::writeTemp(float farenheit, float celcius)
+{
+	ofstream writer("temps.txt");
+	if(writer > 0)
+	{
+		std::cout << "Failed to open file" <<std::endl;
+		return -1;
+	}
+	writer << farenheit << "F, " << celcius << "C" << std::endl;
+	writer.close();
+	return 0;
+}
 
+float TempReader::getCel()
+{
+	return degC;
+}
 
+float TempReader::getFar()
+{
+	return degF;
+}
 /*
  * On Linux, the dirent structure is defined as follows:
  *
