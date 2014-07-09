@@ -96,7 +96,7 @@ int TempReader::writeTemp(float farenheit, float celcius)
 		std::cout << "Failed to open file" <<std::endl;
 		return -1;
 	}
-	writer << farenheit << "F, " << celcius << "C" << std::endl;
+	writer << farenheit << " F, " << celcius << " C" << std::endl;
 	writer.close();
 	return 0;
 }
