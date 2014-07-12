@@ -1,6 +1,6 @@
 CC = g++
 
-all: TestDrive TempDriver
+all: TestDrive TempDriver SonarDriver
 
 TestDrive: GpioPin.o Tester.o
 	$(CC) Tester.o GpioPin.o -o TestDrive
@@ -20,5 +20,14 @@ TempReader.o: TempReader.cpp
 TempDriver.o: TempDriver.cpp
 	$(CC) -Wall -c TempDriver.cpp
 
-clean:
+SonarDriver: Sonar.o USonic.o
+	$(CC) -Wall -c Sonar.o USonic.o
+
+Sonar.o: Sonar.cpp
+	$(CC) -Wall -c Sonar.cpp
+
+USonic.o: USonic.cpp
+	$(CC) -Wall -c USonic.cpp 
+
+clean: all
 	rm -rf *o
