@@ -1,9 +1,15 @@
 #ifndef U_SONIC_H
 #define U_SONIC_H
 #include "GpioPin.h"
-class USonic : public GPIODriver::GpioPin
+#include <string>
+using namespace GPIODriver;
+class USonic : public GpioPin
 {
-int tPin;
-
+USonic* tPin;
+USonic* rPin;
+public:
+	USonic();
+	USonic(string, string);
+	int sendSignal();
 };
 #endif

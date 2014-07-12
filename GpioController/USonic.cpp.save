@@ -1,0 +1,10 @@
+#include "USonic.h"
+
+USonic::USonic(){}
+
+USonic::USonic(string iPin, string oPin) : tsuper(
+
+int USonic::sendSingnal()
+{
+
+}

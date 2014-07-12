@@ -2,17 +2,19 @@
 using namespace GPIODriver;
 
 
-GpioPin::GpioPin(string pNum) : gpioPin(pNum), direction("-1")
+GpioPin::GpioPin(string pNum) : gpioPin(pNum), direction("-1"), exported(0)
 {
+	exportPin();
 	std::cout << pNum << " pin " << pNum << " set" << std::endl;
 }
 
-GpioPin::GpioPin(string pNum, string dir) : gpioPin(pNum), direction(dir)
+GpioPin::GpioPin(string pNum, string dir) : gpioPin(pNum), direction(dir), expoted(0)
 {
+	exportPin();
 	std::cout << " Pin " << pNum << " set and direction is "  << dir << std::endl;
 }
 
-GpioPin::GpioPin(string pNum, string dir, string val) : gpioPin(pNum), direction(dir)
+GpioPin::GpioPin(string pNum, string dir, string val) : gpioPin(pNum), direction(dir), exported(0)
 {
 	exportPin();
 	std::cout << "Pin " << pNum << " set and direction is " << dir << " Pin set as " << val <<std::endl;
@@ -22,11 +24,16 @@ GpioPin::GpioPin(string pNum, string dir, string val) : gpioPin(pNum), direction
 
 GpioPin::~GpioPin()
 {
+	if(exported == 1)
+	{
+		unexportPin();
+	}
 	std::cout << "Deleting pin memory" <<std::endl;
 }
 
 int GpioPin::exportPin()
 {
+	exported = 1;
 	string exportPath = "/sys/class/gpio/export";
 	ofstream exportPin(exportPath.c_str());
 	if(exportPin < 0)
@@ -124,3 +131,5 @@ string GpioPin::getValue()
 	return value;
 }
 //notes:
+//make unexport and export private
+//
