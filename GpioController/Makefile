@@ -20,8 +20,8 @@ TempReader.o: TempReader.cpp
 TempDriver.o: TempDriver.cpp
 	$(CC) -Wall -c TempDriver.cpp
 
-SonarDriver: Sonar.o USonic.o
-	$(CC) -Wall -c Sonar.o USonic.o
+SonarDriver: Sonar.o USonic.o GpioPin.o
+	$(CC) Sonar.o USonic.o GpioPin.o -o SonarDriver
 
 Sonar.o: Sonar.cpp
 	$(CC) -Wall -c Sonar.cpp

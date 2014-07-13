@@ -1,6 +1,8 @@
 #include "GpioPin.h"
 using namespace GPIODriver;
 
+GpioPin::GpioPin() :gpioPin(0), direction("-1"), exported(0){}
+
 
 GpioPin::GpioPin(string pNum) : gpioPin(pNum), direction("-1"), exported(0)
 {
@@ -8,7 +10,7 @@ GpioPin::GpioPin(string pNum) : gpioPin(pNum), direction("-1"), exported(0)
 	std::cout << pNum << " pin " << pNum << " set" << std::endl;
 }
 
-GpioPin::GpioPin(string pNum, string dir) : gpioPin(pNum), direction(dir), expoted(0)
+GpioPin::GpioPin(string pNum, string dir) : gpioPin(pNum), direction(dir), exported(0)
 {
 	exportPin();
 	std::cout << " Pin " << pNum << " set and direction is "  << dir << std::endl;
@@ -17,6 +19,7 @@ GpioPin::GpioPin(string pNum, string dir) : gpioPin(pNum), direction(dir), expot
 GpioPin::GpioPin(string pNum, string dir, string val) : gpioPin(pNum), direction(dir), exported(0)
 {
 	exportPin();
+	setDirection(direction);
 	std::cout << "Pin " << pNum << " set and direction is " << dir << " Pin set as " << val <<std::endl;
 	setValue(val);
 }
@@ -129,6 +132,12 @@ string GpioPin::getValue()
 	}
 	reader.close();
 	return value;
+}
+
+void GpioPin::setUp(string pNum, string direction)
+{
+	exportPin();
+	setDirection(direction);
 }
 //notes:
 //make unexport and export private

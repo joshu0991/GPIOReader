@@ -3,11 +3,14 @@
 #include "GpioPin.h"
 #include <string>
 using namespace GPIODriver;
+using std::string;
 class USonic : public GpioPin
 {
-USonic* tPin;
-USonic* rPin;
+GpioPin* tPin;
+GpioPin* rPin;
+
 public:
+	~USonic();
 	USonic();
 	USonic(string, string);
 	int sendSignal();
