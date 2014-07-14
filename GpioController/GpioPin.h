@@ -24,7 +24,7 @@ public:
 	GpioPin();
 	GpioPin(string);
 	GpioPin(string, string);
-	GpioPin(string, string, string);
+  	GpioPin(string, string, string);
 	string getDirection();
 	int setDirection(string direction);//set in or out
 	int setValue(string val);//for writing to pins

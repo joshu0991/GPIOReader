@@ -1,7 +1,7 @@
 #include "GpioPin.h"
 using namespace GPIODriver;
 
-GpioPin::GpioPin() :gpioPin(0), direction("-1"), exported(0){}
+GpioPin::GpioPin() :gpioPin("0"), direction("-1"), exported(0){}
 
 
 GpioPin::GpioPin(string pNum) : gpioPin(pNum), direction("-1"), exported(0)
