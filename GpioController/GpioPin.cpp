@@ -4,19 +4,20 @@ using namespace GPIODriver;
 GpioPin::GpioPin() :gpioPin("0"), direction("-1"), exported(0){}
 
 
-GpioPin::GpioPin(string pNum) : gpioPin(pNum), direction("-1"), exported(0)
+GpioPin::GpioPin(string pNum) : gpioPin(pNum), direction("-1"), exported(1)
 {
 	exportPin();
 	std::cout << pNum << " pin " << pNum << " set" << std::endl;
 }
 
-GpioPin::GpioPin(string pNum, string dir) : gpioPin(pNum), direction(dir), exported(0)
+GpioPin::GpioPin(string pNum, string dir) : gpioPin(pNum), direction(dir), exported(1)
 {
 	exportPin();
+	setDirection(dir);
 	std::cout << " Pin " << pNum << " set and direction is "  << dir << std::endl;
 }
 
-GpioPin::GpioPin(string pNum, string dir, string val) : gpioPin(pNum), direction(dir), exported(0)
+GpioPin::GpioPin(string pNum, string dir, string val) : gpioPin(pNum), direction(dir), exported(1)
 {
 	exportPin();
 	setDirection(direction);

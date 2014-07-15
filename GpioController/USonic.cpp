@@ -22,6 +22,7 @@ USonic::~USonic()
 
 int USonic::sendSignal()
 {
+	tPin->setValue("1");
 	int r = 0;
 	std::cout << this->tPin << std::endl;
 	std::cout << this->rPin << std::endl;
