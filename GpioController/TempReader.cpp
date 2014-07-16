@@ -90,14 +90,19 @@ float TempReader::convertTemp(string d)
 int TempReader::writeTemp(float farenheit, float celcius)
 {
 	fstream writer;
+	fstream logs;
 	writer.open("Temps.txt", fstream::out);
+	logs.open("logs.txt", fstream::out);
 	if(writer < 0)
 	{
+		logs << "Failed to open file" << std::endl;
+		logs.close();
 		std::cout << "Failed to open file" <<std::endl;
 		return -1;
 	}
-	writer << farenheit << " F, " << celcius << " C" << std::endl;
+	writer << farenheit << " F, " << celcius << " C" << year << " " << month << " " << day << " " << hour << " " << min << " " << sec << std::endl;
 	writer.close();
+	logs.close();
 	return 0;
 }
 
@@ -109,6 +114,59 @@ float TempReader::getCel()
 float TempReader::getFar()
 {
 	return degF;
+}
+
+int TempReader::setDaemon()
+{
+	//make a new process ID
+	procID = fork();
+	if(procID < 0)
+	{
+		std::cout << "Failed to generate new process" << std::endl;
+		return -1;
+	}
+	//show process id
+	if(procID > 0)
+	{
+		std::cout << "Process ID of child " << procID << std::endl;
+		exit(0);
+	}
+	umask(0);
+	sid = setsid();
+	if(sid < 0)
+	{
+		std::cout << "Failed to create new sid" << std::endl;
+		return -1;
+	}
+	chdir("/");
+	close(STDIN_FILENO);
+	close(STDOUT_FILENO);
+	close(STDERR_FILENO);
+	while(true)
+	{
+	int ret = readDS18B20();
+	getTime();
+	writeTemp(degF, degC);
+	if(ret = -1)
+	{
+		break;
+	}
+	sleep(60);
+	}
+	return 0;
+}
+
+int TempReader::getTime()
+{
+	time_t t = time(0);
+	struct tm* now = localtime(&t);
+	year = now->tm_year + 1900;
+	month = now->tm_mon + 1;
+	day = now->tm_mday;
+	hour = now->tm_hour;
+	min = now->tm_min;
+	sec = now->tm_sec;
+	return 0;
 }
 /*
  * On Linux, the dirent structure is defined as follows:

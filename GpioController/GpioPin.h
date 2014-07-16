@@ -4,7 +4,6 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-#include <signal.h>
 
 
 namespace GPIODriver
@@ -14,6 +13,7 @@ using std::string;
 using std::ofstream;
 class GpioPin
 {
+
 	int exported;
 	string direction;
 	string gpioPin;

@@ -4,13 +4,19 @@
 #include <iostream>
 #include <dirent.h>
 #include <string.h>
-#include  <fstream>
+#include <fstream>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <ctime>
 
+using std::time_t;
 using std::fstream;
 using std::ifstream;
 using std::string;
 using std::cout;
 using std::system;
+
 class TempReader
 {
 	struct dirent *dirent;
@@ -18,6 +24,14 @@ class TempReader
 	const char* bufTwo;
 	float degC;
 	float degF;
+	int year;
+	int month;
+	int day;
+	int hour;
+	int min;
+	int sec;
+	pid_t procID;
+	pid_t sid;
 
 public:
 	TempReader();
@@ -27,5 +41,7 @@ public:
 	float convertTemp(string);
 	float getCel();
 	float getFar();
+	int setDaemon();
+	int getTime();
 };
 #endif
