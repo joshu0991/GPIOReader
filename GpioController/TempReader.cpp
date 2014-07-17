@@ -86,7 +86,7 @@ float TempReader::convertTemp(string d)
 	float celcius = temp/1000;
 	return celcius;
 }
-
+//writer for outside of class
 int TempReader::writeTemp(float farenheit, float celcius)
 {
 	fstream writer;
@@ -101,7 +101,7 @@ int TempReader::writeTemp(float farenheit, float celcius)
 	return 0;
 }
 
-
+//For use with daemon not for use outside of class
 int TempReader::writeTemp()
 {
 	fstream writer;
@@ -114,7 +114,7 @@ int TempReader::writeTemp()
 		logs.close();
 		return -1;
 	}
-	writer << degF << "F, " << degC << " C " << year << " " << month << " " << day << " " << hour << " " << min << " " << sec << std::endl;
+	writer << degF << " F, " << degC << " C " << year << " " << month << " " << day << " " << hour << " " << min << " " << sec << std::endl;
 	writer.close();
 	return 0;
 }
