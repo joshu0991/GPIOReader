@@ -96,7 +96,7 @@ int TempReader::writeTemp(float farenheit, float celcius)
 		std::cout << "Failed to open file" <<std::endl;
 		return -1;
 	}
-	writer << farenheit << " F, " << celcius << " C " << year << " " << month << " " << day << " " << hour << " " << min << " " << sec << std::endl;
+	writer << farenheit << " F, " << celcius << " C\nYear: " << year << " Month:  " << month << " Day: " << day << " Hour: " << hour << " Minute: " << min << " Second: " << sec << std::endl;
 	writer.close();
 	return 0;
 }
@@ -114,7 +114,7 @@ int TempReader::writeTemp()
 		logs.close();
 		return -1;
 	}
-	writer << degF << " F, " << degC << " C " << year << " " << month << " " << day << " " << hour << " " << min << " " << sec << std::endl;
+	writer << degF << " F, " << degC << " C\nYear: "  << year << " Month: " << month << " Day: " << day << " Hour: " << hour << " Minute: " << min << " Second: " << sec << std::endl;
 	writer.close();
 	return 0;
 }
