@@ -161,7 +161,7 @@ int TempReader::setDaemon()
 	readDS18B20();
 	getTime();
 	writeTemp();
-	sleep(10);
+	sleep(600);//update every ten minutes
 	}
 	return 0;
 }
