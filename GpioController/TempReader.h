@@ -32,7 +32,7 @@ class TempReader
 	int sec;
 	pid_t procID;
 	pid_t sid;
-
+	int writeTemp();
 public:
 	TempReader();
 	TempReader(const char*, const char*);//will call the modprobe

@@ -90,21 +90,35 @@ float TempReader::convertTemp(string d)
 int TempReader::writeTemp(float farenheit, float celcius)
 {
 	fstream writer;
-	fstream logs;
 	writer.open("Temps.txt", fstream::out);
-	logs.open("logs.txt", fstream::out);
 	if(writer < 0)
 	{
-		logs << "Failed to open file" << std::endl;
-		logs.close();
 		std::cout << "Failed to open file" <<std::endl;
 		return -1;
 	}
-	writer << farenheit << " F, " << celcius << " C" << year << " " << month << " " << day << " " << hour << " " << min << " " << sec << std::endl;
+	writer << farenheit << " F, " << celcius << " C " << year << " " << month << " " << day << " " << hour << " " << min << " " << sec << std::endl;
 	writer.close();
-	logs.close();
 	return 0;
 }
+
+
+int TempReader::writeTemp()
+{
+	fstream writer;
+	fstream logs;
+	writer.open("Temps.txt", fstream::out);
+	logs.open("logs.txt", fstream::out);
+	if(writer < 0 || logs < 0)
+	{
+		logs << "Failed to open file" << std::endl;
+		logs.close();
+		return -1;
+	}
+	writer << degF << "F, " << degC << " C " << year << " " << month << " " << day << " " << hour << " " << min << " " << sec << std::endl;
+	writer.close();
+	return 0;
+}
+
 
 float TempReader::getCel()
 {
@@ -122,36 +136,32 @@ int TempReader::setDaemon()
 	procID = fork();
 	if(procID < 0)
 	{
-		std::cout << "Failed to generate new process" << std::endl;
-		return -1;
+		exit(EXIT_FAILURE);
 	}
 	//show process id
 	if(procID > 0)
 	{
-		std::cout << "Process ID of child " << procID << std::endl;
-		exit(0);
+		exit(EXIT_SUCCESS);
 	}
 	umask(0);
 	sid = setsid();
 	if(sid < 0)
 	{
-		std::cout << "Failed to create new sid" << std::endl;
-		return -1;
+		exit(EXIT_FAILURE);
 	}
-	chdir("/");
+	if(chdir("/") < 0)
+	{
+		exit(EXIT_FAILURE);
+	}
 	close(STDIN_FILENO);
 	close(STDOUT_FILENO);
 	close(STDERR_FILENO);
-	while(true)
+	while(1)
 	{
-	int ret = readDS18B20();
+	readDS18B20();
 	getTime();
-	writeTemp(degF, degC);
-	if(ret = -1)
-	{
-		break;
-	}
-	sleep(60);
+	writeTemp();
+	sleep(10);
 	}
 	return 0;
 }
