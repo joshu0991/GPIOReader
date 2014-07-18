@@ -29,5 +29,8 @@ Sonar.o: Sonar.cpp
 USonic.o: USonic.cpp
 	$(CC) -Wall -c USonic.cpp 
 
+SignalCatcher.o: SignalCatcher.cpp
+	$(CC) -Wall -c SignalHandler.cpp
+
 clean: all
 	rm -rf *o

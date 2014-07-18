@@ -178,6 +178,8 @@ int TempReader::getTime()
 	sec = now->tm_sec;
 	return 0;
 }
+
+
 /*
  * On Linux, the dirent structure is defined as follows:
  *
