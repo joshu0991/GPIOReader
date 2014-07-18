@@ -2,10 +2,9 @@
 #include <iostream>
 
 
-class SignalCatcher
+struct SignalCatcher
 {
-
-public:
 	SignalCatcher();
-
+	struct sigaction sigAc
+	void ccHandler();
 };
