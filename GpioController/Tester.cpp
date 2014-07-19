@@ -1,9 +1,11 @@
-//#include "GpioPin.h"
+
+#include "GpioPin.h"
 #include <signal.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <cstdlib>
-//using namespace GPIODriver;
+using namespace GPIODriver;
+
 
 void ouch(int sig)
 {

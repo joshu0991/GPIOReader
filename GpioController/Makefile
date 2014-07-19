@@ -2,7 +2,7 @@ CC = g++
 
 all: TestDrive TempDriver SonarDriver
 
-TestDrive: GpioPin.o Tester.o
+TestDrive: GpioPin.o Tester.o 
 	$(CC) Tester.o GpioPin.o -o TestDrive
 
 GpioPin.o: GpioPin.cpp
