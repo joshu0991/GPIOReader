@@ -5,7 +5,7 @@ all: TestDrive TempDriver SonarDriver
 TestDrive: GpioPin.o Tester.o 
 	$(CC) Tester.o GpioPin.o -o TestDrive
 
-GpioPin.o: GpioPin.cpp
+GpioPin.o: GpioPin.cpp GpioPin.h
 	$(CC) -Wall -c GpioPin.cpp
 
 Tester.o: Tester.cpp
@@ -14,7 +14,7 @@ Tester.o: Tester.cpp
 TempDriver: TempReader.o TempDriver.o
 	$(CC) TempReader.o TempDriver.o -o TempDriver
 
-TempReader.o: TempReader.cpp
+TempReader.o: TempReader.cpp TempReader.h
 	$(CC) -Wall -c TempReader.cpp
 
 TempDriver.o: TempDriver.cpp
@@ -26,8 +26,8 @@ SonarDriver: Sonar.o USonic.o GpioPin.o
 Sonar.o: Sonar.cpp
 	$(CC) -Wall -c Sonar.cpp
 
-USonic.o: USonic.cpp
+USonic.o: USonic.cpp USonic.h
 	$(CC) -Wall -c USonic.cpp 
 
-clean: all
-	rm f *o
+clean:
+	rm all GpioPin.o Tester.o TempReader.o TempDriver.o Sonar.o USonic.o

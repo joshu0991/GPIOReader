@@ -13,10 +13,9 @@ using std::string;
 using std::ofstream;
 class GpioPin
 {
-
-	int exported;
-	string direction;
 	string gpioPin;
+	string direction;
+	int exported;
 	int exportPin();
 	int unexportPin();
 public:
