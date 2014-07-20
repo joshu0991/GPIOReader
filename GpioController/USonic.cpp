@@ -22,10 +22,22 @@ USonic::~USonic()
 
 int USonic::sendSignal()
 {
-	int r = 0;
+	if(tPin > 0)
+	{
 	tPin->setValue("1");
 	usleep(1);
 	tPin->setValue("0");
-	return r;
+	}
+	else
+	{
+		return -1;
+	}
+	return 0;
 }
 
+int USonic::receiveSignal()
+{
+
+
+	return 0;
+}

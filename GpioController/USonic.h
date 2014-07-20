@@ -14,5 +14,6 @@ public:
 	USonic();
 	USonic(string, string);
 	int sendSignal();
+	int receiveSignal();
 };
 #endif

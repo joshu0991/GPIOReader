@@ -2,7 +2,7 @@
 
 int main()
 {
-	USonic* u = new USonic("4", "5");
+	USonic* u = new USonic("2", "25");
 	u->sendSignal();
 	delete u;
 	return 0;
