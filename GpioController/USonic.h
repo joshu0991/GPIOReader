@@ -8,6 +8,8 @@ class USonic : public GpioPin
 {
 GpioPin* tPin;
 GpioPin* rPin;
+int start;
+int stop;
 
 public:
 	~USonic();
