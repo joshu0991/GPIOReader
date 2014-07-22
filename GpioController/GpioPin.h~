@@ -31,5 +31,4 @@ namespace GPIODriver
     int  getGpioNum();
     void setUp(string, string);
   };
-}
 #endif
