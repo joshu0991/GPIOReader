@@ -42,12 +42,13 @@ int USonic::receiveSignal()
 	{
 	  while(rPin->getValue() == "0")
 	   {
-	      start = std::clock();
+	     start = std::chrono::high_resolution_clock::now();
 	   }
 	  while(rPin->getValue() == "1")
 	    {
-	      stop = std::clock();
+	      stop = std::chrono::high_resolution_clock::now();
 	    }
+	  //time = stop - start;
 	}
 	return 0;
 }

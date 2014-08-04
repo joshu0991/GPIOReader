@@ -40,18 +40,15 @@ int USonic::receiveSignal()
 
 	if(rPin > 0)
 	{
-	  // while(rPin->getValue() == "0")
-	  // {
-	      start = std::clock();
-	      std::cout <<"Start " <<(float)start << std::endl;
-	      // break;
-	      // }
+	  while(rPin->getValue() == "0")
+	   {
+	     start = std::chrono::high_resolution_clock::now();
+	   }
 	  while(rPin->getValue() == "1")
 	    {
-	      stop = std::clock();
-	      std::cout <<"Stop " <<(float)stop << std::endl;
-	      break;
+	      stop = std::chrono::high_resolution_clock::now();
 	    }
+	  time = stop - start;
 	}
 	return 0;
 }
