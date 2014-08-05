@@ -11,7 +11,7 @@ GpioPin* tPin;
 GpioPin* rPin;
 clock_t start;
 clock_t stop;
- float time;
+float time;
 public:
 	~USonic();
 	USonic();

@@ -16,7 +16,7 @@ USonic::~USonic()
 		delete tPin;
 		delete rPin;
 		tPin = 0;
-		rPin =0;
+		rPin = 0;
 	}
 }
 
@@ -40,16 +40,16 @@ int USonic::receiveSignal()
 
 	if(rPin > 0)
 	{
-	  //while(rPin->getValue() == "0")
-	  // {
+	  while(rPin->getValue() == "0")
+	    {
 	     start = clock();
-	     // }
-	  //while(rPin->getValue() == "1")
-	  //  {
+	    }
+	  while(rPin->getValue() == "1")
+	    {
 	      stop = clock();
-	  //  }
-	  time = (float)stop - start;
+	    }
+	  time = (float) (stop - start);
+	  distance = 17000 * time;
 	}
-	std::cout << "Time "<<time << std::endl;
 	return 0;
 }

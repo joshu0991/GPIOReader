@@ -12,6 +12,7 @@ GpioPin* rPin;
 clock_t start;
 clock_t stop;
 float time;
+float distance;
 public:
 	~USonic();
 	USonic();

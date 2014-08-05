@@ -16,7 +16,7 @@ USonic::~USonic()
 		delete tPin;
 		delete rPin;
 		tPin = 0;
-		rPin =0;
+		rPin = 0;
 	}
 }
 
@@ -35,6 +35,7 @@ int USonic::sendSignal()
 	return 0;
 }
 
+//returns distance in centimeters
 int USonic::receiveSignal()
 {
 
@@ -48,7 +49,8 @@ int USonic::receiveSignal()
 	    {
 	      stop = clock();
 	    }
-	  time = (float)stop - start;
+	  time = (float) (stop - start);
+	  distance = 17000 * time;
 	}
 	return 0;
 }
