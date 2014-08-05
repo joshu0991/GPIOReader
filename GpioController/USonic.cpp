@@ -41,14 +41,14 @@ int USonic::receiveSignal()
 	if(rPin > 0)
 	{
 	  while(rPin->getValue() == "0")
-	   {
-	     start = std::chrono::high_resolution_clock::now();
-	   }
+	    {
+	     start = clock();
+	    }
 	  while(rPin->getValue() == "1")
 	    {
-	      stop = std::chrono::high_resolution_clock::now();
+	      stop = clock();
 	    }
-	  //time = stop - start;
+	  time = (float)stop - start;
 	}
 	return 0;
 }

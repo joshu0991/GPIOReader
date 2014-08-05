@@ -1,7 +1,7 @@
 #ifndef U_SONIC_H
 #define U_SONIC_H
 #include "GpioPin.h"
-#include <chrono>
+#include <ctime>
 #include <string>
 using namespace GPIODriver;
 using std::string;
@@ -9,10 +9,9 @@ class USonic : public GpioPin
 {
 GpioPin* tPin;
 GpioPin* rPin;
-auto start;
-auto stop;
-auto time;
-
+clock_t start;
+clock_t stop;
+float time;
 public:
 	~USonic();
 	USonic();
@@ -20,4 +19,4 @@ public:
 	int sendSignal();
 	int receiveSignal();
 };
-#endif
+#endif /* U_SONIC_H  */
