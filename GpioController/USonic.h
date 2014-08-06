@@ -19,5 +19,6 @@ public:
 	USonic(string, string);
 	int sendSignal();
 	int receiveSignal();
+	float getDistance();
 };
 #endif /* U_SONIC_H  */
