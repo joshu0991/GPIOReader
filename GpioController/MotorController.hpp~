@@ -1,0 +1,16 @@
+#ifndef MOTOR_CONTROLLER
+#define MOTOR_CONTROLLER 
+#include "GpioPin.h"
+using namespace GPIODriver;
+
+class MotorController : public GpioPin
+{
+public:
+  MotorController();
+  MotorController(string, string);
+  int moveForward();
+  int moveBackward();
+  int turnLeft();
+  int turnRight();
+};
+#endif /* MOTOR_CONTROLLER  */
