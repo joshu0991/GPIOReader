@@ -104,19 +104,19 @@ int TempReader::writeTemp(float farenheit, float celcius)
 //For use with daemon not for use outside of class
 int TempReader::writeTemp()
 {
-	fstream writer;
-	fstream logs;
-	writer.open("Temps.txt", fstream::out);
-	logs.open("logs.txt", fstream::out);
-	if(writer < 0 || logs < 0)
-	{
-		logs << "Failed to open file" << std::endl;
-		logs.close();
-		return -1;
-	}
-	writer << degF << " F, " << degC << " C "  << month << "-" << day << "-" << year << " " << hour << ":" << min << ":" << sec << std::endl;
-	writer.close();
-	return 0;
+  fstream writer;
+  fstream logs;
+  writer.open("Temps.txt", fstream::out);
+  logs.open("logs.txt", fstream::out);
+  if(writer < 0 || logs < 0)
+    {
+      logs << "Failed to open file" << std::endl;
+      logs.close();
+      return -1;
+    }
+  writer << degF << " F, " << degC << " C "  << month << "- " << day << "-" << year << " " << hour << ":" << min << ":" << sec << std::endl;
+  writer.close();
+  return 0;
 }
 
 
