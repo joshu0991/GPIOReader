@@ -7,7 +7,7 @@ int main()
 	//vout = vin * R2/(R1+R2) to calculate needed ressistance
 	USonic* u = new USonic("24", "23");
 	u->sendSignal();
-	u->receiveSignal();
+	//u->receiveSignal();
 	delete u;
 	return 0;
 }
