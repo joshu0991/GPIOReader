@@ -22,25 +22,27 @@ USonic::~USonic()
 
 int USonic::sendSignal()
 {
+	int i =0;
 	if(tPin > 0)
 	{
 		sleep(2);
 		tPin->setValue("1");
-		usleep(1);
+		usleep(10);
 		tPin->setValue("0");
 		while(rPin->getValue() == "0")
 		{
-			start = clock();
-			std::cout << "start " << start << std::endl;
+			time(&start);
+			//string a = rPin->getValue();
+			//std::cout << "start " << start << std::endl;
 		}
 		while(rPin->getValue() == "1")
 		{
-			stop = clock();
-			std::cout << "Stop " << stop << std::endl;
+			time(&stop);
+			//std::cout << "Stop " << stop << std::endl;
 		}
 		std::cout << "Signal sent" << std::endl;
-		time = (float)(stop - start);
-		distance = time * 17150;
+		pulseTime = difftime(stop, start);
+		distance = pulseTime * 17150;
 		std::cout << "Distance " << distance <<std::endl;
 	}
 	else
@@ -50,8 +52,8 @@ int USonic::sendSignal()
 	return 0;
 }
 
-//returns distance in centimeters
-int USonic::receiveSignal()
+//          returns distance in centimeters
+/*int USonic::receiveSignal()
 {
 
 	if(rPin > 0)
@@ -76,3 +78,4 @@ int USonic::receiveSignal()
 	}
 	return 0;
 }
+*/

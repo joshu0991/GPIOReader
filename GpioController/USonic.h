@@ -9,9 +9,9 @@ class USonic : public GpioPin
 {
 GpioPin* tPin;
 GpioPin* rPin;
-clock_t start;
-clock_t stop;
-float time;
+time_t start;
+time_t stop;
+float pulseTime;
 float distance;
 public:
 	~USonic();
