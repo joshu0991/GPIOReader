@@ -6,15 +6,24 @@ inputDriver::inputDriver(const char* inputFilePath) : request(0)
 	inputFile = inputFilePath;
 }
 
+//gets the speed and direction from the server speed and direction can be 1-4
 int inputDriver::readDataFile()
 {
 	fstream stream("serverInput.txt");
 	stream.open(inputFile);
+	
+	
+	return 0;
+}
+
+int inputDriver::setDaemon()
+{
+	
 	return 0;
 }
 
 
-
+//test main
 int main()
 {
 
