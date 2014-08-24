@@ -7,17 +7,20 @@
 #include <fstream>
 
 using namespace GPIODriver;
-using std::fstream;
+using std::ifstream;
 using std::cout;
+using std::endl;
+using std::string;
 
-class inputDriver : public GpioPin{
-
-	const char* request;
-	int readDataFile(); 
-	const char* inputFile;
+class inputDriver : public GpioPin
+{
+	string request;
+	char* inputFilePath;
+	//int readDataFile(); 
 public:
-	inputDriver(const char*);
+	int readDataFile();
+	inputDriver(char*);
 	int setDaemon();
-	const char* getRequest();
+	string getRequest();
 };
-#endif /* INPUT_DRIVER_H  */
+#endif

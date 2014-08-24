@@ -1,0 +1,4 @@
+- have server write commands to movement
+-have daemon constantly read the updates
+	-execute the command
+	-return file to neutral state after execution
