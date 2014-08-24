@@ -32,4 +32,4 @@ namespace GPIODriver
     void setUp(string, string);
   };
 }
-#endif
+#endif /* GPIO_PIN_H  */
