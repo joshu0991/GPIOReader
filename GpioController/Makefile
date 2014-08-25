@@ -1,6 +1,6 @@
 CC = g++ -std=c++0x
 
-all: TestDrive TempDriver SonarDriver inputDriver
+all: TestDrive TempDriver SonarDriver inputDriver #RobotDriver
 
 TestDrive: GpioPin.o Tester.o 
 	$(CC) Tester.o GpioPin.o -o TestDrive
@@ -34,5 +34,9 @@ inputDriver.o: inputDriver.h inputDriver.cpp GpioPin.cpp GpioPin.h
 
 inputDriver: GpioPin.o inputDriver.o
 	$(CC) GpioPin.o inputDriver.o -o inputDriver
+
+#RobotDriver.o: inputDriver.o TempReader.o Sonar.o GpioPin.o
+#	$(CC) inputDriver.o TempReader.o Sonar.o GpioPin.o -o RobotDriver
+
 clean:
 	rm -rf all GpioPin.o Tester.o TempReader.o TempDriver.o Sonar.o USonic.o

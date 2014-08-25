@@ -11,20 +11,45 @@ int inputDriver::readDataFile()
 {
 	ifstream stream(inputFilePath);
 	getline(stream, request);
-	cout << request <<std::endl;
+	cout << request << endl;
 	stream.close();
 	return 0;
 }
 
 int inputDriver::setDaemon()
 {
+	procId = fork();
+	if(procId < 0)
+	{
+		exit(EXIT_FAILURE);
+	}
+	if(procId > 0)
+	{
+		exit(EXIT_SUCCESS);
+	}
+	umask(0);
+	sid = setsid();
+	if(sid < 0)
+	{
+		exit(EXIT_FAILURE);
+	}
+	if(chdir("/") < 0)
+	{
+		exit(EXIT_FAILURE);
+	}
+	close(STDIN_FILENO);
+	close(STDOUT_FILENO);
+	close(STDERR_FILENO);
+	while(1)
+	{
+	readDataFile();
+	}
 	return 0;
 }
 
 string inputDriver::getRequest()
 {
-	string a = "stub";
-	return a;
+	return request;
 }
 
 //test main
@@ -38,3 +63,4 @@ int main()
 
 	return 0;
 }
+
